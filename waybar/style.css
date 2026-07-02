@@ -1,0 +1,27 @@
+* {
+    /* `otf-font-awesome` is required to be installed for icons */
+    font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    color: #ffffff
+}
+
+window#waybar {
+    border-bottom: 3px solid rgba(100, 114, 125, 0.5);
+    color: #ffffff;
+    transition-property: background-color;
+    background: transparent;
+    transition-duration: .5s;
+}
+
+#network,
+#network.connected,
+#network.disconnected,
+#bluetooth,
+#bluetooth.connected,
+#pulseaudio,
+#battery,
+#clock,
+#tray {
+    color: #ffffff;
+    background: transparent;
+}
