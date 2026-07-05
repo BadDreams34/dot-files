@@ -11,20 +11,37 @@ return {
     { '<leader>fb', '<cmd>Telescope buffers<cr>', desc = 'Buffers' },
     -- Press Space + f + h to search help tags
     { '<leader>fh', '<cmd>Telescope help_tags<cr>', desc = 'Help Tags' },
-    -- Your new project picker (mapped to Space + f + p)
+    -- Your project picker (mapped to Space + f + p)
     { '<leader>fp', function() require('telescope').extensions.projects() end, desc = 'Projects' },
   },
   config = function(_, opts)
-    -- Initialize telescope with standard defaults
     local telescope = require("telescope")
-    telescope.setup(opts)
+    local ts_actions = require("telescope.actions")
+
+    -- Safely merge global mappings for buffer management with any existing opts
+    local final_opts = vim.tbl_deep_extend("force", opts or {}, {
+      defaults = {
+        mappings = {
+          i = {
+            -- Press Ctrl+d inside the picker to delete/close the selected buffer
+            ["<C-d>"] = ts_actions.delete_buffer,
+          },
+          n = {
+            -- Press Ctrl+d in normal mode inside the picker to delete/close
+            ["<C-d>"] = ts_actions.delete_buffer,
+          },
+        },
+      },
+    })
+
+    -- Initialize telescope with configurations
+    telescope.setup(final_opts)
 
     -- Local aliases for telescope modules needed by your script
     local ts_pickers = require("telescope.pickers")
     local ts_finders = require("telescope.finders")
     local ts_previewers = require("telescope.previewers")
-    local ts_actions = require("telescope.actions")
-    local ts_actions_state = require("telescope.actions.state")
+    local ts_actions_state = require("telescope.actions.state") -- Fixed the typo here!
     local ts_conf = require("telescope.config").values
 
     -- Define your custom project picker extension

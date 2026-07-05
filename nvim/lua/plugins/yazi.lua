@@ -10,7 +10,7 @@ return {
     },
     -- Pressing <leader>cw will open Yazi in Neovim's global working directory
     {
-      "<leader>cw",
+      "<leader>h",
       "<cmd>Yazi cwd<cr>",
       desc = "Open yazi in Neovim's pwd",
     },
