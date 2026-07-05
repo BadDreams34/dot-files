@@ -31,7 +31,7 @@ return {
     telescope.extensions = telescope.extensions or {}
     telescope.extensions.projects = function(proj_opts)
       vim.system(
-        { "bash", "-c", "ls -1td ~/code/*/ ~/.config/hypr/ ~/.config/nvim/" },
+        { "bash", "-c", "ls -1td ~/code/ ~/.config/nvim/" },
         { text = true },
         vim.schedule_wrap(function(res)
           local projects = vim.split(res.stdout, "\n")
