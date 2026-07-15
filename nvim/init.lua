@@ -49,9 +49,8 @@ vim.keymap.set('i', '<S-Tab>', function()
 end, { expr = true, replace_keycodes = true })
 vim.o.list = true
 
-
+vim.keymap.set('n', '<leader>e', vim.lsp.buf.format, { desc = "Format buffer" })
 vim.opt.cpo:remove("a")
-
 
 
 

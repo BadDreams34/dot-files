@@ -13,8 +13,9 @@ return {
         "graphql",
         "emmet_ls",
         "prismals",
+        "biome",
         "pyright",
-        -- "eslint",
+         "eslint",
       },
     },
     dependencies = {
